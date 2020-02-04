@@ -32,4 +32,15 @@ class FormViewModel {
         }
     }
     
+    func numberOfItems() -> Int {
+        return formData?.pages?.count ?? 0
+    }
+    
+    func viewModelForCell(at indexPath: IndexPath) -> PageViewModel {
+        let pages = formData?.pages ?? []
+        let vms = pages.compactMap { PageViewModel(page: $0) }
+        
+        return vms[indexPath.item]
+    }
+    
 }
