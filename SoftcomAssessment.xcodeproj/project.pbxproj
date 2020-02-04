@@ -8,20 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		208CFAE623E9B9AE00313734 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208CFAE523E9B9AE00313734 /* AppDelegate.swift */; };
-		208CFAEA23E9B9AE00313734 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208CFAE923E9B9AE00313734 /* ViewController.swift */; };
+		208CFAEA23E9B9AE00313734 /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208CFAE923E9B9AE00313734 /* FormViewController.swift */; };
 		208CFAED23E9B9AE00313734 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 208CFAEB23E9B9AE00313734 /* Main.storyboard */; };
 		208CFAEF23E9B9AF00313734 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 208CFAEE23E9B9AF00313734 /* Assets.xcassets */; };
 		208CFAF223E9B9AF00313734 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 208CFAF023E9B9AF00313734 /* LaunchScreen.storyboard */; };
+		20D6499823E9C00900AA313C /* pet_adoption.json in Resources */ = {isa = PBXBuildFile; fileRef = 20D6499723E9C00900AA313C /* pet_adoption.json */; };
+		20D6499B23E9C29200AA313C /* FileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D6499A23E9C29200AA313C /* FileLoader.swift */; };
+		20ED8D4E23E9BC6B00C65595 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED8D4D23E9BC6B00C65595 /* Models.swift */; };
+		20ED8D5023E9BDE100C65595 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED8D4F23E9BDE100C65595 /* FormViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		208CFAE223E9B9AE00313734 /* SoftcomAssessment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoftcomAssessment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		208CFAE523E9B9AE00313734 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		208CFAE923E9B9AE00313734 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		208CFAE923E9B9AE00313734 /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		208CFAEC23E9B9AE00313734 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		208CFAEE23E9B9AF00313734 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		208CFAF123E9B9AF00313734 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		208CFAF323E9B9AF00313734 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20D6499723E9C00900AA313C /* pet_adoption.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pet_adoption.json; sourceTree = "<group>"; };
+		20D6499A23E9C29200AA313C /* FileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLoader.swift; sourceTree = "<group>"; };
+		20ED8D4D23E9BC6B00C65595 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		20ED8D4F23E9BDE100C65595 /* FormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,9 +62,11 @@
 		208CFAE423E9B9AE00313734 /* SoftcomAssessment */ = {
 			isa = PBXGroup;
 			children = (
+				20D6499923E9C28400AA313C /* Manager */,
 				208CFAFA23E9BA5000313734 /* Commons */,
+				20ED8D5123E9BDE900C65595 /* Models */,
 				208CFAF923E9BA2E00313734 /* Resources */,
-				20ED8D4C23E9BAC600C65595 /* Form */,
+				20ED8D4C23E9BAC600C65595 /* FormScreen */,
 			);
 			path = SoftcomAssessment;
 			sourceTree = "<group>";
@@ -64,6 +74,7 @@
 		208CFAF923E9BA2E00313734 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				20D6499723E9C00900AA313C /* pet_adoption.json */,
 				208CFAEB23E9B9AE00313734 /* Main.storyboard */,
 				208CFAEE23E9B9AF00313734 /* Assets.xcassets */,
 				208CFAF023E9B9AF00313734 /* LaunchScreen.storyboard */,
@@ -80,12 +91,37 @@
 			path = Commons;
 			sourceTree = "<group>";
 		};
-		20ED8D4C23E9BAC600C65595 /* Form */ = {
+		20D6499923E9C28400AA313C /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				208CFAE923E9B9AE00313734 /* ViewController.swift */,
+				20D6499A23E9C29200AA313C /* FileLoader.swift */,
 			);
-			path = Form;
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		20ED8D4C23E9BAC600C65595 /* FormScreen */ = {
+			isa = PBXGroup;
+			children = (
+				20ED8D5223E9BDFF00C65595 /* ViewModels */,
+				208CFAE923E9B9AE00313734 /* FormViewController.swift */,
+			);
+			path = FormScreen;
+			sourceTree = "<group>";
+		};
+		20ED8D5123E9BDE900C65595 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				20ED8D4D23E9BC6B00C65595 /* Models.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		20ED8D5223E9BDFF00C65595 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				20ED8D4F23E9BDE100C65595 /* FormViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +185,7 @@
 				208CFAF223E9B9AF00313734 /* LaunchScreen.storyboard in Resources */,
 				208CFAEF23E9B9AF00313734 /* Assets.xcassets in Resources */,
 				208CFAED23E9B9AE00313734 /* Main.storyboard in Resources */,
+				20D6499823E9C00900AA313C /* pet_adoption.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,8 +196,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				208CFAEA23E9B9AE00313734 /* ViewController.swift in Sources */,
+				20ED8D4E23E9BC6B00C65595 /* Models.swift in Sources */,
+				208CFAEA23E9B9AE00313734 /* FormViewController.swift in Sources */,
+				20ED8D5023E9BDE100C65595 /* FormViewModel.swift in Sources */,
 				208CFAE623E9B9AE00313734 /* AppDelegate.swift in Sources */,
+				20D6499B23E9C29200AA313C /* FileLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
