@@ -17,6 +17,7 @@ class FormPageCell: UICollectionViewCell {
     
     var viewModel: PageViewModel? {
         didSet {
+            sectionsTableView.dataSource = viewModel.self
             sectionsTableView.reloadData()
         }
     }
@@ -25,9 +26,10 @@ class FormPageCell: UICollectionViewCell {
         super.awakeFromNib()
         
         sectionsTableView.delegate = self
-        sectionsTableView.dataSource = self
+        
         sectionsTableView.tableFooterView = UIView()
         sectionsTableView.allowsSelection = false
+        sectionsTableView.separatorStyle = .none
     }
     
     func configure(with viewModel: PageViewModel) {
@@ -37,33 +39,23 @@ class FormPageCell: UICollectionViewCell {
 
 }
 
-extension FormPageCell: UITableViewDataSource, UITableViewDelegate {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel?.numberOfSections() ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel?.numberOfRows(in: section) ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SectionElementCellId", for: indexPath) as! SectionElementCell
-        cell.textLabel?.text = "Element"
-        return cell
-    }
+extension FormPageCell: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 24
+        return 32
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        viewModel?.sectionTitle(for: section)
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return viewModel?.heightForRow(at: indexPath) ?? 0
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let footer = PageFooter()
-        return footer
+        if shouldShowSubmit {
+            let footer = PageFooter()
+            return footer
+        } else {
+            return nil
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

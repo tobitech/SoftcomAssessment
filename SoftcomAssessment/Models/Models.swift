@@ -25,11 +25,15 @@ struct Section: Decodable {
 }
 
 struct Element: Decodable {
-    let type: String?
+    let type: String
     let label: String?
     let isMandatory: Bool?
-    let unique_id: String?
-    let rules: [Rule]?
+    let unique_id: String
+    let rules: [Rule]
+    
+    var inputType: FormElementType {
+        return FormElementType(rawValue: type)!
+    }
 }
 
 struct Rule: Decodable {
@@ -38,4 +42,12 @@ struct Rule: Decodable {
     let action: String?
     let otherwise: String?
     let targets: [String]?
+}
+
+enum FormElementType: String {
+    case text
+    case formattednumeric
+    case datetime
+    case embeddedphoto
+    case yesno
 }

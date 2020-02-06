@@ -8,10 +8,17 @@
 
 import UIKit
 
-class SectionElementCell: UITableViewCell {
+class EmbeddedPhotoElementCell: UITableViewCell {
+    
+    @IBOutlet weak var photoImageView: EmbeddedImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+    }
+    
+    func configure(with url: String) {
+        photoImageView.loadImage(urlString: url)
     }
     
 }
