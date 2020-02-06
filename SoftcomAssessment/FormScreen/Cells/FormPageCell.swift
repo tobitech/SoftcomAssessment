@@ -13,6 +13,8 @@ class FormPageCell: UICollectionViewCell {
     @IBOutlet weak var pageLabel: UILabel!
     @IBOutlet weak var sectionsTableView: UITableView!
     
+    var shouldShowSubmit = false
+    
     var viewModel: PageViewModel? {
         didSet {
             sectionsTableView.reloadData()
@@ -52,10 +54,19 @@ extension FormPageCell: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 44
+        return 24
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         viewModel?.sectionTitle(for: section)
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footer = PageFooter()
+        return footer
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return shouldShowSubmit ? 44 : 0
     }
 }

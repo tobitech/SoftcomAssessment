@@ -18,6 +18,7 @@
 		20DE8E8023E9D40800A4D6B5 /* PageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE8E7F23E9D40800A4D6B5 /* PageViewModel.swift */; };
 		20DE8E8223EA092700A4D6B5 /* SectionElementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE8E8123EA092700A4D6B5 /* SectionElementCell.swift */; };
 		20DE8E8423EA0CBB00A4D6B5 /* ElementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE8E8323EA0CBB00A4D6B5 /* ElementViewModel.swift */; };
+		20DE8E8623EB251300A4D6B5 /* PageFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE8E8523EB251300A4D6B5 /* PageFooter.swift */; };
 		20ED8D4E23E9BC6B00C65595 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED8D4D23E9BC6B00C65595 /* Models.swift */; };
 		20ED8D5023E9BDE100C65595 /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED8D4F23E9BDE100C65595 /* FormViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -36,6 +37,7 @@
 		20DE8E7F23E9D40800A4D6B5 /* PageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewModel.swift; sourceTree = "<group>"; };
 		20DE8E8123EA092700A4D6B5 /* SectionElementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionElementCell.swift; sourceTree = "<group>"; };
 		20DE8E8323EA0CBB00A4D6B5 /* ElementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementViewModel.swift; sourceTree = "<group>"; };
+		20DE8E8523EB251300A4D6B5 /* PageFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageFooter.swift; sourceTree = "<group>"; };
 		20ED8D4D23E9BC6B00C65595 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		20ED8D4F23E9BDE100C65595 /* FormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				20DE8E7B23E9D12300A4D6B5 /* FormPageCell.swift */,
+				20DE8E8523EB251300A4D6B5 /* PageFooter.swift */,
 				20DE8E8123EA092700A4D6B5 /* SectionElementCell.swift */,
 			);
 			path = Cells;
@@ -119,8 +122,8 @@
 		20ED8D4C23E9BAC600C65595 /* FormScreen */ = {
 			isa = PBXGroup;
 			children = (
-				20DE8E7623E9D0A500A4D6B5 /* Cells */,
 				20ED8D5223E9BDFF00C65595 /* ViewModels */,
+				20DE8E7623E9D0A500A4D6B5 /* Cells */,
 				208CFAE923E9B9AE00313734 /* FormViewController.swift */,
 			);
 			path = FormScreen;
@@ -217,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20ED8D4E23E9BC6B00C65595 /* Models.swift in Sources */,
+				20DE8E8623EB251300A4D6B5 /* PageFooter.swift in Sources */,
 				208CFAEA23E9B9AE00313734 /* FormViewController.swift in Sources */,
 				20DE8E8223EA092700A4D6B5 /* SectionElementCell.swift in Sources */,
 				20DE8E7D23E9D12300A4D6B5 /* FormPageCell.swift in Sources */,

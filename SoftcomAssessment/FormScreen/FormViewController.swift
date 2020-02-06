@@ -39,6 +39,12 @@ extension FormViewController: UICollectionViewDelegateFlowLayout {
         
         let vm = viewModel.viewModelForCell(at: indexPath)
         cell.configure(with: vm)
+        
+        if indexPath.item == viewModel.numberOfItems() - 1 {
+            cell.shouldShowSubmit = true
+        } else {
+            cell.shouldShowSubmit = false
+        }
     
         return cell
     }
