@@ -26,10 +26,14 @@ struct Section: Decodable {
 
 struct Element: Decodable {
     let type: String
-    let label: String?
-    let isMandatory: Bool?
     let unique_id: String
     let rules: [Rule]
+    let file: String?
+    let label: String?
+    let isMandatory: Bool?
+    let keyboard: String?
+    let formattedNumeric: String?
+    let mode: String?
     
     var inputType: FormElementType {
         return FormElementType(rawValue: type)!

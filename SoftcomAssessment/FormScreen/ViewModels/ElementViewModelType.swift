@@ -37,8 +37,11 @@ extension ElementViewModelType {
 class EmbeddedPhotoElementViewModel: ElementViewModelType {
     var element: Element
     
+    var imageUrl: String
+    
     required init(element: Element) {
         self.element = element
+        self.imageUrl = element.file ?? ""
     }
 }
 
@@ -58,6 +61,29 @@ class TextElementViewModel: ElementViewModelType {
         self.element = element
         self.label = element.label ?? ""
         self.isMandatory = element.isMandatory ?? false
+    }
+}
+
+class FormattedNumericElementViewModel: ElementViewModelType {
+    var element: Element
+    
+    var inputValue: String = "" {
+        didSet {
+            print(inputValue)
+        }
+    }
+    
+    var label: String
+    var isMandatory: Bool
+    var keyboardMode: String
+    var formattedNumeric: String
+    
+    required init(element: Element) {
+        self.element = element
+        self.label = element.label ?? ""
+        self.isMandatory = element.isMandatory ?? false
+        self.keyboardMode = element.keyboard ?? ""
+        self.formattedNumeric = element.formattedNumeric ?? ""
     }
 }
 
@@ -91,10 +117,12 @@ class DateElementViewModel: ElementViewModelType {
     
     var label: String
     var isMandatory: Bool
+    var mode: String
     
     required init(element: Element) {
         self.element = element
         self.label = element.label ?? ""
         self.isMandatory = element.isMandatory ?? false
+        self.mode = element.mode ?? ""
     }
 }

@@ -10,9 +10,20 @@ import UIKit
 
 class DateElementCell: UITableViewCell {
     
+    @IBOutlet weak var inputLabel: UILabel!
     @IBOutlet weak var inputField: UITextField!
     
     let datePicker = UIDatePicker()
+    
+    var viewModel: DateElementViewModel? {
+        didSet {
+            guard let viewModel = viewModel else {
+                return
+            }
+            
+            inputLabel.text = viewModel.label
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

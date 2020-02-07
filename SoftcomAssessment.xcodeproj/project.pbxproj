@@ -18,6 +18,7 @@
 		2096DEF323EC76BE00854818 /* EmbeddedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096DEF223EC76BE00854818 /* EmbeddedImageView.swift */; };
 		2096DEF523EC821A00854818 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096DEF423EC821A00854818 /* Extensions.swift */; };
 		2096DEF723EC833400854818 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096DEF623EC833400854818 /* Protocols.swift */; };
+		2096DEF923ECA64A00854818 /* FormattedNumericElementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096DEF823ECA64A00854818 /* FormattedNumericElementCell.swift */; };
 		20D6499823E9C00900AA313C /* pet_adoption.json in Resources */ = {isa = PBXBuildFile; fileRef = 20D6499723E9C00900AA313C /* pet_adoption.json */; };
 		20D6499B23E9C29200AA313C /* FileLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D6499A23E9C29200AA313C /* FileLoader.swift */; };
 		20DE8E7D23E9D12300A4D6B5 /* FormPageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DE8E7B23E9D12300A4D6B5 /* FormPageCell.swift */; };
@@ -43,6 +44,7 @@
 		2096DEF223EC76BE00854818 /* EmbeddedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedImageView.swift; sourceTree = "<group>"; };
 		2096DEF423EC821A00854818 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		2096DEF623EC833400854818 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		2096DEF823ECA64A00854818 /* FormattedNumericElementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattedNumericElementCell.swift; sourceTree = "<group>"; };
 		20D6499723E9C00900AA313C /* pet_adoption.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pet_adoption.json; sourceTree = "<group>"; };
 		20D6499A23E9C29200AA313C /* FileLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileLoader.swift; sourceTree = "<group>"; };
 		20DE8E7B23E9D12300A4D6B5 /* FormPageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormPageCell.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				20DE8E8523EB251300A4D6B5 /* PageFooter.swift */,
 				20DE8E8123EA092700A4D6B5 /* EmbeddedPhotoElementCell.swift */,
 				2096DEEB23EC6DF800854818 /* TextElementCell.swift */,
+				2096DEF823ECA64A00854818 /* FormattedNumericElementCell.swift */,
 				2096DEED23EC6E0600854818 /* YesNoElementCell.swift */,
 				2096DEEF23EC744300854818 /* DateElementCell.swift */,
 			);
@@ -261,6 +264,7 @@
 				20ED8D5023E9BDE100C65595 /* FormViewModel.swift in Sources */,
 				208CFAE623E9B9AE00313734 /* AppDelegate.swift in Sources */,
 				20D6499B23E9C29200AA313C /* FileLoader.swift in Sources */,
+				2096DEF923ECA64A00854818 /* FormattedNumericElementCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,30 +1,30 @@
 //
-//  PageSectionCell.swift
+//  FormattedNumericElementCell.swift
 //  SoftcomAssessment
 //
-//  Created by Oluwatobi Omotayo on 04/02/2020.
+//  Created by Oluwatobi Omotayo on 06/02/2020.
 //  Copyright © 2020 Oluwatobi Omotayo. All rights reserved.
 //
 
 import UIKit
 
-class EmbeddedPhotoElementCell: UITableViewCell {
+class FormattedNumericElementCell: UITableViewCell {
     
-    @IBOutlet weak var photoImageView: EmbeddedImageView!
+    @IBOutlet weak var inputLabel: UILabel!
+    @IBOutlet weak var inputField: UITextField!
     
-    var viewModel: EmbeddedPhotoElementViewModel? {
+    var viewModel: FormattedNumericElementViewModel? {
         didSet {
             guard let viewModel = viewModel else {
                 return
             }
             
-            // photoImageView.loadImage(urlString: viewModel.imageUrl)
+            inputLabel.text = viewModel.label
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
     
 }

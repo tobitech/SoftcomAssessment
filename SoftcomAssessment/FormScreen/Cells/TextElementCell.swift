@@ -12,6 +12,16 @@ class TextElementCell: UITableViewCell {
     @IBOutlet weak var inputLabel: UILabel!
     @IBOutlet weak var inputField: UITextField!
     
+    var viewModel: TextElementViewModel? {
+        didSet {
+            guard let viewModel = viewModel else {
+                return
+            }
+            
+            inputLabel.text = viewModel.label
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

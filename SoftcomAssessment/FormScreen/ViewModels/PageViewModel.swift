@@ -36,7 +36,7 @@ class PageViewModel: NSObject {
         case .yesno:
             return YesNoElementViewModel(element: element)
         case .formattednumeric:
-            return TextElementViewModel(element: element)
+            return FormattedNumericElementViewModel(element: element)
         case .datetime:
             return DateElementViewModel(element: element)
         }
@@ -72,18 +72,23 @@ extension PageViewModel: UITableViewDataSource {
         switch element.inputType {
         case .embeddedphoto:
             let cell: EmbeddedPhotoElementCell = tableView.dequeueReusableCell(for: indexPath)
+            cell.viewModel = viewModelForCell(at: indexPath) as? EmbeddedPhotoElementViewModel
             return cell
         case .text:
             let cell: TextElementCell = tableView.dequeueReusableCell(for: indexPath)
+            cell.viewModel = viewModelForCell(at: indexPath) as? TextElementViewModel
             return cell
         case .yesno:
             let cell: YesNoElementCell = tableView.dequeueReusableCell(for: indexPath)
+            cell.viewModel = viewModelForCell(at: indexPath) as? YesNoElementViewModel
             return cell
         case .formattednumeric:
-            let cell: TextElementCell = tableView.dequeueReusableCell(for: indexPath)
+            let cell: FormattedNumericElementCell = tableView.dequeueReusableCell(for: indexPath)
+            cell.viewModel = viewModelForCell(at: indexPath) as? FormattedNumericElementViewModel
             return cell
         case .datetime:
             let cell: DateElementCell = tableView.dequeueReusableCell(for: indexPath)
+            cell.viewModel = viewModelForCell(at: indexPath) as? DateElementViewModel
             return cell
         }
     }
