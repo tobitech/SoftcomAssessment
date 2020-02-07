@@ -28,6 +28,12 @@ extension UIViewController {
     @objc func handleTap() {
         view.endEditing(true)
     }
+    
+    func showAlert(with message: String) {
+        let ac = UIAlertController(title: "Notice!", message: message, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        present(ac, animated: true, completion: nil)
+    }
 }
 
 extension UIStoryboard {

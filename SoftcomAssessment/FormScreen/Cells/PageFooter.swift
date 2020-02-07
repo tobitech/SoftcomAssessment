@@ -46,7 +46,6 @@ class PageFooter: UIView {
     }
     
     @objc private func handleSubmit() {
-        print(123)
         delegate?.didSubmitForm()
     }
     

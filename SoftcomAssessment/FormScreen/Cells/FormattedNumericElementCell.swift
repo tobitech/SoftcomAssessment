@@ -19,12 +19,27 @@ class FormattedNumericElementCell: UITableViewCell {
                 return
             }
             
-            inputLabel.text = viewModel.label
+            updateCell(with: viewModel)
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        inputField.addTarget(self, action: #selector(handleInputChanged), for: .editingChanged)
+    }
+    
+    private func updateCell(with vm: FormattedNumericElementViewModel) {
+        var text = "\(vm.label)"
+        if vm.isMandatory {
+            text += " (Req.)"
+        }
+        
+        inputLabel.text = text
+    }
+    
+    @objc private func handleInputChanged() {
+        viewModel?.inputValue = inputField.text
     }
     
 }

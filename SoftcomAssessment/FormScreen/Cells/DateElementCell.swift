@@ -21,7 +21,7 @@ class DateElementCell: UITableViewCell {
                 return
             }
             
-            inputLabel.text = viewModel.label
+            updateCell(with: viewModel)
         }
     }
     
@@ -54,7 +54,9 @@ class DateElementCell: UITableViewCell {
     @objc private func handleDoneBarButton() {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
-        inputField.text = formatter.string(from: datePicker.date)
+        let text = formatter.string(from: datePicker.date)
+        inputField.text = text
+        viewModel?.inputValue = text
         self.endEditing(true)
     }
     
@@ -62,5 +64,13 @@ class DateElementCell: UITableViewCell {
         self.endEditing(true)
     }
 
+    private func updateCell(with vm: DateElementViewModel) {
+        var text = "\(vm.label)"
+        if vm.isMandatory {
+            text += " (Req.)"
+        }
+        
+        inputLabel.text = text
+    }
     
 }

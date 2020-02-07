@@ -35,8 +35,42 @@ struct Element: Decodable {
     let formattedNumeric: String?
     let mode: String?
     
+    var value: String?
+    
+    var elementValue: String {
+        return value ?? ""
+    }
+    
     var inputType: FormElementType {
         return FormElementType(rawValue: type)!
+    }
+    
+    var shouldValidate: Bool {
+        guard let isMandatory = isMandatory else {
+            return false
+        }
+        
+        if isMandatory {
+            return true
+        } else if !isMandatory && elementValue.isEmpty {
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    var isValueValid: Bool {
+        guard let isMandatory = isMandatory else {
+            return false
+        }
+        
+        if isMandatory && !elementValue.isEmpty {
+            return true
+        } else if !isMandatory && !elementValue.isEmpty {
+            return true
+        } else {
+            return false
+        }
     }
 }
 

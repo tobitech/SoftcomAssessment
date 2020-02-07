@@ -19,7 +19,7 @@ class YesNoElementCell: UITableViewCell {
                 return
             }
             
-            inputLabel.text = viewModel.label
+            updateCell(with: viewModel)
         }
     }
     
@@ -30,7 +30,16 @@ class YesNoElementCell: UITableViewCell {
     }
     
     @objc func handleSwitchChanged(_ sender: UISwitch) {
-        print(sender.isOn)
+        viewModel?.inputValue = sender.isOn ? "Yes" : "No"
+    }
+    
+    private func updateCell(with vm: YesNoElementViewModel) {
+        var text = "\(vm.label)"
+        if vm.isMandatory {
+            text += " (Req.)"
+        }
+        
+        inputLabel.text = text
     }
     
 }

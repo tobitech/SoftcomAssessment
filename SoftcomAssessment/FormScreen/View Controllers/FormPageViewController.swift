@@ -49,7 +49,6 @@ class FormPageViewController: UIViewController {
     }
     
     @objc private func handleNext() {
-        print("going to next page")
         let nextPage = defaultStoryboard.instantiateViewController(ofType: FormPageViewController.self)
         navigationController?.pushViewController(nextPage, animated: true)
     }
@@ -73,6 +72,7 @@ extension FormPageViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if viewModel.shouldShowSubmit {
             let footer = PageFooter()
+            footer.delegate = self
             return footer
         } else {
             return nil
@@ -85,3 +85,24 @@ extension FormPageViewController: UITableViewDelegate {
     
 }
 
+extension FormPageViewController: PageFooterDelegate {
+    func didSubmitForm() {
+        let dataManager = FormDataManager.shared
+        let invalidElements = dataManager.validateForm()
+        
+        if invalidElements.count > 0 {
+            var message = "Please fill the following fields correctly: \n"
+            for element in invalidElements {
+                guard let label = element.label else {
+                    continue
+                }
+                message += label + "\n"
+            }
+            
+            showAlert(with: message)
+        } else {
+            let vc = defaultStoryboard.instantiateViewController(ofType: SuccessViewController.self)
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+}

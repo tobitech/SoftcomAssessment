@@ -11,9 +11,11 @@ import Foundation
 class YesNoElementViewModel: ElementViewModelType {
     var element: Element
     
-    var inputValue = false {
+    var inputValue: String? {
         didSet {
-            print(inputValue)
+            // set the element's element value property here.
+            element.value = inputValue
+            FormDataManager.shared.addAnswer(element: element)
         }
     }
     
