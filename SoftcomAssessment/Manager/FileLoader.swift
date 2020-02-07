@@ -14,6 +14,7 @@ class FileLoader {
     
     var bundle: Bundle
     
+    // MARK: Init
     init(bundle: Bundle = Bundle.main) {
         self.bundle = bundle
     }

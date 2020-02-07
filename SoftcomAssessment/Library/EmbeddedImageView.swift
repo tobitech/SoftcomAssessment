@@ -12,6 +12,8 @@ import UIKit
 
 var imageCache = [String: UIImage]()
 
+
+/// Custon ImageView for downlading image content fron a remote URL
 class EmbeddedImageView: UIImageView {
     
     var lastURLUsedToLoadImage: String?

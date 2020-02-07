@@ -8,6 +8,9 @@
 
 import Foundation
 
+
+/// Class responsible for loading data and validating form data.
+/// exposes a singleton member.
 class FormDataManager {
     
     // MARK: Properties
@@ -32,8 +35,10 @@ class FormDataManager {
         }
     }
     
+    /// All element available in the form data.
     private var formElements = [Element]()
     
+    /// This is for persisting elements that have been filled
     private var answeredElements = [Element]()
     
     
@@ -69,6 +74,7 @@ class FormDataManager {
         return pages[index]
     }
     
+    /// this is to update the `AnsweredElement` array
     func addAnswer(element: Element) {
         if !answeredElements.contains(where: { $0.unique_id == element.unique_id }) {
             self.answeredElements.append(element)
@@ -95,7 +101,6 @@ class FormDataManager {
         /// do the actual validation
         var notValidElements = [Element]()
         for element in elements {
-            print(element.unique_id)
             if let filledElement = answeredElements
                 .first(where: { $0.unique_id == element.unique_id }) {
                 if !filledElement.isValueValid {                
