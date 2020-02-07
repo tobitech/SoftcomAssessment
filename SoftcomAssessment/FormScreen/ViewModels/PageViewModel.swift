@@ -12,10 +12,18 @@ class PageViewModel: NSObject {
     
     var label: String
     var sections: [Section]
+    var shouldShowSubmit = false
+    var dataManager: FormDataManager!
     
-    init(page: Page) {
+    init(dataManager: FormDataManager = FormDataManager.shared, pageIndex: Int) {
+        self.dataManager = dataManager
+        let page = dataManager.pageForController(at: pageIndex)
         self.sections = page.sections ?? []
         self.label = page.label ?? ""
+        
+        if pageIndex == dataManager.numberOfItems() - 1 {
+            shouldShowSubmit = true
+        }
     }
     
     private func elementForRow(at indexPath: IndexPath) -> Element {

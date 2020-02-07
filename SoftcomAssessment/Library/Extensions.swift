@@ -8,14 +8,6 @@
 
 import UIKit
 
-extension ReusableView {
-    
-    static var reuseIdentifier: String {
-        return String(describing: self)
-    }
-    
-}
-
 extension UITableViewCell: ReusableView {}
 
 extension UITableView {
@@ -25,5 +17,21 @@ extension UITableView {
         }
         
         return cell
+    }
+}
+
+extension UIViewController {
+    func addTapGesture() {
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
+    }
+    
+    @objc func handleTap() {
+        view.endEditing(true)
+    }
+}
+
+extension UIStoryboard {
+    func instantiateViewController<T>(ofType type: T.Type) -> T {
+        return instantiateViewController(withIdentifier: String(describing: type)) as! T
     }
 }

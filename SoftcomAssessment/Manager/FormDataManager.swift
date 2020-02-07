@@ -8,9 +8,10 @@
 
 import Foundation
 
-class FormViewModel {
+class FormDataManager {
     
     // MARK: Properties
+    static let shared = FormDataManager()
     var formData: FormData?
     
     // MARK: Init
@@ -36,11 +37,9 @@ class FormViewModel {
         return formData?.pages?.count ?? 0
     }
     
-    func viewModelForCell(at indexPath: IndexPath) -> PageViewModel {
+    func pageForController(at index: Int) -> Page {
         let pages = formData?.pages ?? []
-        let vms = pages.compactMap { PageViewModel(page: $0) }
-        
-        return vms[indexPath.item]
+        return pages[index]
     }
     
 }
