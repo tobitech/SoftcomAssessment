@@ -18,7 +18,7 @@ class EmbeddedPhotoElementCell: UITableViewCell {
                 return
             }
             
-            // photoImageView.loadImage(urlString: viewModel.imageUrl)
+             photoImageView.loadImage(urlString: viewModel.imageUrl)
         }
     }
     

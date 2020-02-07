@@ -35,16 +35,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bYe-Ma-gsL">
-                                <rect key="frame" x="16" y="60" width="351" height="41"/>
+                                <rect key="frame" x="16" y="52" width="351" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="M1Q-5d-yaK"/>
+                                    <constraint firstAttribute="height" constant="32" id="M1Q-5d-yaK"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="VcT-od-7j2">
-                                <rect key="frame" x="0.0" y="109" width="375" height="558"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="575"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EmbeddedPhotoElementCell" rowHeight="228" id="Trj-Gt-PSs" customClass="EmbeddedPhotoElementCell" customModule="SoftcomAssessment" customModuleProvider="target">
@@ -210,7 +210,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="VcT-od-7j2" firstAttribute="top" secondItem="bYe-Ma-gsL" secondAttribute="bottom" constant="8" id="5LU-tz-WKo"/>
-                            <constraint firstItem="bYe-Ma-gsL" firstAttribute="top" secondItem="cVS-XS-lVr" secondAttribute="top" constant="16" id="Dc3-5m-ka1"/>
+                            <constraint firstItem="bYe-Ma-gsL" firstAttribute="top" secondItem="cVS-XS-lVr" secondAttribute="top" constant="8" id="Dc3-5m-ka1"/>
                             <constraint firstItem="VcT-od-7j2" firstAttribute="trailing" secondItem="cVS-XS-lVr" secondAttribute="trailing" id="E2q-eL-dAg"/>
                             <constraint firstItem="bYe-Ma-gsL" firstAttribute="leading" secondItem="cVS-XS-lVr" secondAttribute="leading" constant="16" id="KRh-Ns-wrX"/>
                             <constraint firstItem="cVS-XS-lVr" firstAttribute="trailing" secondItem="bYe-Ma-gsL" secondAttribute="trailing" constant="8" id="Wf9-nV-aj7"/>

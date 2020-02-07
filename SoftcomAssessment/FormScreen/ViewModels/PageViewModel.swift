@@ -83,7 +83,7 @@ class PageViewModel: NSObject {
         
         switch element.inputType {
         case .embeddedphoto:
-            return 228
+            return 150
         case .yesno:
             guard let _ = ruleEnforcer else {
                 setRuleEnforcer(indexPath: indexPath)

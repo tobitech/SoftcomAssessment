@@ -36,6 +36,7 @@ class FormPageViewController: UIViewController {
         addTapGesture()
         setupNavBar()
         setupSectionsTableView()
+        setupKeyboardHandling()
     }
     
     private func setupNavBar() {
@@ -59,11 +60,25 @@ class FormPageViewController: UIViewController {
     
     private func setupSectionsTableView() {
         sectionsTableView.delegate = self
-        // sectionsTableView.contentInset = .init(top: 0, left: 0, bottom: 180, right: 0)
         sectionsTableView.tableFooterView = UIView()
         sectionsTableView.allowsSelection = false
         sectionsTableView.separatorStyle = .none
     }
+    
+    private func setupKeyboardHandling() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+     @objc private func keyboardWillShow(notification: NSNotification) {
+         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+             sectionsTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+         }
+     }
+
+     @objc private func keyboardWillHide(notification: NSNotification) {
+         sectionsTableView.contentInset = .zero
+     }
 
 }
 
