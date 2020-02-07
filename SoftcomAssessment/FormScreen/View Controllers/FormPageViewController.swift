@@ -29,6 +29,10 @@ class FormPageViewController: UIViewController {
             viewModel = PageViewModel(pageIndex: index)
         }
         
+        viewModel.formRulesChanged = {
+            self.sectionsTableView.reloadData()
+        }
+        
         addTapGesture()
         setupNavBar()
         setupSectionsTableView()

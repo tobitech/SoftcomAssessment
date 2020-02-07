@@ -9,6 +9,8 @@
 import Foundation
 
 class YesNoElementViewModel: ElementViewModelType {
+    var delegate: ElementViewModelTypeDelegate?
+    
     var element: Element
     
     var inputValue: String? {
@@ -16,6 +18,7 @@ class YesNoElementViewModel: ElementViewModelType {
             // set the element's element value property here.
             element.value = inputValue
             FormDataManager.shared.addAnswer(element: element)
+            delegate?.inputValueChanged(element)
         }
     }
     

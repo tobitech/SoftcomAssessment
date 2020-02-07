@@ -9,6 +9,8 @@
 import Foundation
 
 class EmbeddedPhotoElementViewModel: ElementViewModelType {
+    var delegate: ElementViewModelTypeDelegate?
+    
     var element: Element
     
     var imageUrl: String

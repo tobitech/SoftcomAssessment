@@ -89,3 +89,12 @@ enum FormElementType: String {
     case embeddedphoto
     case yesno
 }
+
+enum RuleConditionType: String {
+    case equals
+}
+
+enum RuleActionType: String {
+    case show
+    case hide
+}

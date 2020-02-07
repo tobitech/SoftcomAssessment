@@ -11,6 +11,7 @@ import Foundation
 protocol ElementViewModelType {
     
     var element: Element { get set}
+    var delegate: ElementViewModelTypeDelegate? { get set }
     
     var type: FormElementType { get }
     var uniqueId: String { get }
@@ -32,4 +33,8 @@ extension ElementViewModelType {
     var rules: [Rule] {
         return element.rules
     }
+}
+
+protocol ElementViewModelTypeDelegate {
+    func inputValueChanged(_ element: Element)
 }

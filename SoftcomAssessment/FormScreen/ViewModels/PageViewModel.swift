@@ -15,6 +15,13 @@ class PageViewModel: NSObject {
     var shouldShowSubmit = false
     var dataManager: FormDataManager!
     
+    var formRulesChanged: (() -> ())?
+    
+    // MARK: Used to modify tableView based on rule.
+    var ruleToBeEnforced: Rule?
+    var ruleEnforcer: Element?
+    
+    // MARK: Init
     init(dataManager: FormDataManager = FormDataManager.shared, pageIndex: Int) {
         self.dataManager = dataManager
         let page = dataManager.pageForController(at: pageIndex)
@@ -30,7 +37,9 @@ class PageViewModel: NSObject {
         let section = sections[indexPath.section]
         let elements = section.elements ?? []
         
-        return elements[indexPath.row]
+        let element = elements[indexPath.row]
+        
+        return element
     }
     
     func viewModelForCell(at indexPath: IndexPath) -> ElementViewModelType {
@@ -50,6 +59,25 @@ class PageViewModel: NSObject {
         }
     }
     
+    private func setRuleEnforcer(indexPath: IndexPath) {
+        let section = sections[indexPath.section]
+        let elements = section.elements ?? []
+        
+        let element = elements[indexPath.row]
+        
+        if (indexPath.row + 1) < elements.count {
+            let nextElement = elements[indexPath.row + 1]
+            for rule in element.rules {
+                if rule.targets?.contains(where: { $0 == nextElement.unique_id }) ?? false {
+                    if ruleEnforcer == nil {
+                        self.ruleEnforcer = element
+                        self.ruleToBeEnforced = rule
+                    }
+                }
+            }
+        }
+    }
+    
     func heightForRow(at indexPath: IndexPath) -> CGFloat {
         let element = elementForRow(at: indexPath)
         
@@ -57,9 +85,65 @@ class PageViewModel: NSObject {
         case .embeddedphoto:
             return 228
         case .yesno:
-            return 47
+            guard let _ = ruleEnforcer else {
+                setRuleEnforcer(indexPath: indexPath)
+                return 47
+            }
+            let height = getRowHeight(for: element, defaultHeight: 47)
+            return height
         default:
             return 90
+        }
+    }
+    
+    private func getRowHeight(for element: Element, defaultHeight: CGFloat) -> CGFloat {
+        guard let rule = ruleToBeEnforced else {
+            return defaultHeight
+        }
+        let targets = rule.targets ?? []
+        
+        if targets.contains(element.unique_id) {
+            guard let condition = rule.condition,
+                let action = rule.action,
+                let otherwise = rule.otherwise,
+                let conditionType = RuleConditionType(rawValue: condition),
+                let actionType = RuleActionType(rawValue: action),
+                let otherwiseType = RuleActionType(rawValue: otherwise)  else {
+                return defaultHeight
+            }
+            
+            switch conditionType {
+            case .equals:
+                if ruleEnforcer?.elementValue == rule.value {
+                    switch actionType {
+                    case .hide:
+                        return 0.0
+                    case .show:
+                        return defaultHeight
+                    }
+                } else {
+                    switch otherwiseType {
+                    case .hide:
+                        return 0.0
+                    case .show:
+                        return defaultHeight
+                    }
+                }
+            }
+        } else {
+            return defaultHeight
+        }
+    }
+}
+
+extension PageViewModel: ElementViewModelTypeDelegate {
+    func inputValueChanged(_ element: Element) {
+        
+        for rule in element.rules {
+            self.ruleToBeEnforced = rule
+            self.ruleEnforcer = element
+            
+            self.formRulesChanged?()
         }
     }
 }
@@ -81,22 +165,27 @@ extension PageViewModel: UITableViewDataSource {
         case .embeddedphoto:
             let cell: EmbeddedPhotoElementCell = tableView.dequeueReusableCell(for: indexPath)
             cell.viewModel = viewModelForCell(at: indexPath) as? EmbeddedPhotoElementViewModel
+            cell.viewModel?.delegate = self
             return cell
         case .text:
             let cell: TextElementCell = tableView.dequeueReusableCell(for: indexPath)
             cell.viewModel = viewModelForCell(at: indexPath) as? TextElementViewModel
+            cell.viewModel?.delegate = self
             return cell
         case .yesno:
             let cell: YesNoElementCell = tableView.dequeueReusableCell(for: indexPath)
             cell.viewModel = viewModelForCell(at: indexPath) as? YesNoElementViewModel
+            cell.viewModel?.delegate = self
             return cell
         case .formattednumeric:
             let cell: FormattedNumericElementCell = tableView.dequeueReusableCell(for: indexPath)
             cell.viewModel = viewModelForCell(at: indexPath) as? FormattedNumericElementViewModel
+            cell.viewModel?.delegate = self
             return cell
         case .datetime:
             let cell: DateElementCell = tableView.dequeueReusableCell(for: indexPath)
             cell.viewModel = viewModelForCell(at: indexPath) as? DateElementViewModel
+            cell.viewModel?.delegate = self
             return cell
         }
     }

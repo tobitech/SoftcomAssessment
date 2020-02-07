@@ -9,6 +9,8 @@
 import Foundation
 
 class TextElementViewModel: ElementViewModelType {
+    var delegate: ElementViewModelTypeDelegate?
+    
     var element: Element
     
     var inputValue: String? {

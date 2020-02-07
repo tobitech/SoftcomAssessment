@@ -9,6 +9,8 @@
 import Foundation
 
 class DateElementViewModel: ElementViewModelType {
+    var delegate: ElementViewModelTypeDelegate?
+    
     var element: Element
     
     var inputValue: String? {

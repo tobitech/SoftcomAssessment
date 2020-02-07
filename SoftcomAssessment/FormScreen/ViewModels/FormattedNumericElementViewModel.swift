@@ -9,6 +9,8 @@
 import Foundation
 
 class FormattedNumericElementViewModel: ElementViewModelType {
+    var delegate: ElementViewModelTypeDelegate?
+    
     var element: Element
     
     var inputValue: String? {
